@@ -1,21 +1,43 @@
 # Pokédex — React Assignment 2
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+![Vite](https://img.shields.io/badge/Vite-purple)
+
+## Live Demo
+
+GitHub Pages Deployment:
+
+https://waqarahmedkhan96.github.io/pokedex-react-app/
+
+Repository:
+
+https://github.com/Waqarahmedkhan96/pokedex-react-app
+
+---
 
 ## Overview
 
 This project is a Pokédex web application developed in React using Vite and TypeScript as part of a frontend assignment.
 
-The application allows users to browse Pokémon retrieved from the PokéAPI, navigate through paginated results, and open detailed views showing information such as Pokémon types, abilities, height, weight, and stats.
+The application allows users to browse Pokémon retrieved from the PokéAPI, navigate through paginated results, and open detailed views showing information such as Pokémon types, abilities, height, weight and stats.
 
-The project was built with a focus on clean structure, reusable components, responsive design, and clear routing using React Router.
+The project was designed with emphasis on:
+
+- reusable components  
+- responsive UI  
+- clean routing  
+- maintainable code structure  
+- API integration using modern React practices
 
 ---
 
 ## Assignment Requirements Covered
 
-This solution fulfills all required assignment criteria:
+This solution fulfills all assignment requirements.
 
-### Retrieve Pokémon from Web API
-The application uses data from:
+### 1. Retrieve Pokémon from a Web API
+
+The application consumes data from:
 
 https://pokeapi.co/
 
@@ -23,25 +45,35 @@ Pokémon data is fetched dynamically using the Fetch API.
 
 ---
 
-### Pagination
+### 2. Pagination
+
 The Pokédex does not load all Pokémon at once.
 
-It uses simple pagination with:
+Pagination is implemented using:
 
 - Previous button  
-- Next button  
+- Next button
 
-Data is loaded in pages using:
+PokéAPI query parameters:
 
-- limit
-- offset
+```text
+limit
+offset
+```
 
-This improves usability and follows assignment requirements.
+Example:
+
+```text
+https://pokeapi.co/api/v2/pokemon?limit=12&offset=0
+```
+
+This follows the assignment requirement for paginated browsing.
 
 ---
 
-### Detailed Pokémon View
-Clicking a Pokémon opens a dedicated details page displaying:
+### 3. Detailed Pokémon View
+
+Clicking a Pokémon opens a dedicated detail page showing:
 
 - Official artwork  
 - Pokémon ID  
@@ -51,44 +83,60 @@ Clicking a Pokémon opens a dedicated details page displaying:
 - Abilities  
 - Base stats  
 
-Routing is handled dynamically using URL parameters.
-
-Example:
+Example route:
 
 ```text
 /pokemon/bulbasaur
 ```
 
+Dynamic routing is handled with React Router.
+
 ---
 
-### Multiple Pages with React Router
+### 4. Multiple Pages
+
 The application contains multiple pages:
 
 - Home  
 - Pokédex  
-- Pokémon Details  
 - About  
+- Pokémon Details
 
 React Router is used for navigation.
 
 ---
 
-### Built with Vite
-The project was created using Vite with React + TypeScript.
+### 5. Built Using Vite
+
+The application was created using:
+
+React + TypeScript + Vite
 
 ---
 
 ## Features
 
-- Responsive modern UI
-- Reusable React components
-- API data fetching
-- Loading states
-- Error handling
-- Paginated browsing
-- Dynamic detail pages
-- Mobile-friendly navigation
-- Hamburger menu on smaller screens
+- Responsive modern interface  
+- Reusable React components  
+- Paginated Pokémon catalog  
+- Dynamic detail pages  
+- Loading states  
+- Error handling  
+- Mobile responsive hamburger menu  
+- GitHub Pages deployment
+
+---
+
+## Screenshots
+
+### Home Page
+(Add screenshot here)
+
+### Pokédex Page
+(Add screenshot here)
+
+### Pokémon Details Page
+(Add screenshot here)
 
 ---
 
@@ -100,6 +148,7 @@ The project was created using Vite with React + TypeScript.
 - React Router DOM
 - CSS
 - PokéAPI
+- GitHub Pages
 
 ---
 
@@ -136,10 +185,11 @@ src/
 
 ## Design Approach
 
-The project was structured around separation of concerns.
+The application follows separation of concerns.
 
 ### Components
-Reusable UI elements were isolated into components such as:
+
+Reusable UI elements were separated into components:
 
 - Navbar  
 - Footer  
@@ -150,55 +200,61 @@ This avoids duplication and improves maintainability.
 
 ---
 
-### Pages
-Application views were separated into pages to support routing and keep responsibilities clear.
-
----
-
 ### API Layer
-API calls were placed in a separate `api` folder rather than inside components, keeping fetching logic organized.
+
+API logic was placed in:
+
+```text
+src/api/
+```
+
+instead of embedding fetch logic inside UI components.
+
+This keeps code organized and scalable.
 
 ---
 
 ### Type Safety
+
 TypeScript interfaces were used to model:
 
-- Pokémon list data
-- Pokémon detail data
+- Pokémon list responses  
+- Pokémon detail responses
 
-This improves readability and reduces errors.
+This improves reliability and readability.
 
 ---
 
-## How Pagination Works
-
-PokéAPI supports pagination using query parameters.
-
-Example:
+## User Flow
 
 ```text
-https://pokeapi.co/api/v2/pokemon?limit=12&offset=0
+Home
+↓
+Open Pokédex
+↓
+Browse Pokémon
+↓
+Use Next / Previous
+↓
+Click Pokémon
+↓
+View Details
 ```
-
-- limit controls how many Pokémon appear per page  
-- offset controls where the next page starts
-
-The application updates the offset when users press next or previous.
 
 ---
 
 ## Installation
 
-Clone the repository:
+Clone repository:
 
 ```bash
-git clone https://github.com/yourusername/pokedex.git
+git clone https://github.com/Waqarahmedkhan96/pokedex-react-app.git
 ```
 
-Move into project folder:
+Enter project:
 
 ```bash
-cd pokedex
+cd pokedex-react-app
 ```
 
 Install dependencies:
@@ -207,7 +263,7 @@ Install dependencies:
 npm install
 ```
 
-Run development server:
+Run locally:
 
 ```bash
 npm run dev
@@ -221,13 +277,13 @@ http://localhost:5173
 
 ---
 
-## Build for Production
+## Production Build
 
 ```bash
 npm run build
 ```
 
-Preview production build:
+Preview build:
 
 ```bash
 npm run preview
@@ -237,94 +293,77 @@ npm run preview
 
 ## Deployment
 
-This project is intended to be deployed to GitHub Pages.
+Deployment is configured using GitHub Pages.
 
-Deployment can be done using:
+Deploy command:
 
 ```bash
 npm run deploy
 ```
 
-(After GitHub Pages configuration.)
-
----
-
-## Example User Flow
+Hosted through:
 
 ```text
-Home
-↓
-Open Pokédex
-↓
-Browse Pokémon
-↓
-Use Next / Previous Pagination
-↓
-Click Pokémon
-↓
-View Detailed Information
+gh-pages branch
 ```
 
 ---
 
 ## Error Handling
 
-The application includes basic error handling for:
+Includes handling for:
 
-- Failed API requests  
-- Invalid responses  
-- Loading states while data is fetched
-
-This improves user experience.
+- API request failures  
+- Loading states  
+- Invalid responses
 
 ---
 
 ## Responsive Design
 
-The UI adapts to:
+Designed for:
 
 - Desktop  
 - Tablet  
-- Mobile  
+- Mobile
 
-Responsive features include:
+Includes:
 
-- Flexible grid layout  
-- Single-column mobile layouts  
-- Mobile hamburger navigation
+- Responsive grids  
+- Mobile navigation  
+- Adaptive layouts
 
 ---
 
 ## Possible Future Improvements
 
-Potential enhancements:
+Possible enhancements:
 
 - Search Pokémon by name  
 - Filter by type  
 - Evolution chain view  
-- Favorite Pokémon using local storage  
-- Type-based color themes  
-- Next/Previous Pokémon navigation on detail page
+- Favorite Pokémon using localStorage  
+- Type-based badge colors  
+- Previous / next Pokémon navigation in details view
 
 ---
 
 ## Learning Reflection
 
-This project helped practice:
+This project provided practice in:
 
 - React component architecture  
-- Routing with React Router  
-- API integration  
+- React Router  
+- Fetching REST API data  
 - State management with hooks  
-- Responsive frontend design  
-- Structuring a small React application professionally
+- Responsive frontend development  
+- Deploying a React application to GitHub Pages
 
 ---
 
 ## Author
 
-Waqar Ahmed Khan
-
+Waqar Ahmed Khan  
 Software Technology Engineering Student  
 VIA University College
 

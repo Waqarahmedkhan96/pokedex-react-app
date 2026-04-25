@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { getPokemonList } from "../api/pokemonApi";
 import PokemonCard from "../components/PokemonCard";
 import Pagination from "../components/Pagination";
@@ -14,7 +16,9 @@ function PokedexPage() {
   const [previousUrl, setPreviousUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [searchName, setSearchName] = useState("");
 
+  const navigate = useNavigate();
   const page = offset / LIMIT + 1;
 
   useEffect(() => {
@@ -50,6 +54,17 @@ function PokedexPage() {
     }
   }
 
+  function handleSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const cleanedName = searchName.trim().toLowerCase();
+
+    if (cleanedName.length > 0) {
+      navigate(`/pokemon/${cleanedName}`);
+      setSearchName("");
+    }
+  }
+
   return (
     <section className="page">
       <div className="page-header">
@@ -57,9 +72,19 @@ function PokedexPage() {
         <h1>Browse Pokémon</h1>
         <p>
           Use pagination to move through Pokémon. Click a card to see detailed
-          information.
+          information or search directly by Pokémon name.
         </p>
       </div>
+
+      <form className="search-form" onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder="Search Pokémon by name, e.g. pikachu"
+          value={searchName}
+          onChange={(event) => setSearchName(event.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
 
       {isLoading && <Loading />}
 

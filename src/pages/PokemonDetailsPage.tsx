@@ -4,6 +4,10 @@ import { getPokemonDetails } from "../api/pokemonApi";
 import Loading from "../components/Loading";
 import type { PokemonDetail } from "../types/pokemon";
 
+function getTypeClass(typeName: string) {
+  return `type-badge type-${typeName}`;
+}
+
 function PokemonDetailsPage() {
   const { name } = useParams();
   const [pokemon, setPokemon] = useState<PokemonDetail | null>(null);
@@ -21,7 +25,7 @@ function PokemonDetailsPage() {
         const data = await getPokemonDetails(name);
         setPokemon(data);
       } catch {
-        setError("Could not load Pokémon details.");
+        setError("Could not load Pokémon details. Please check the Pokémon name.");
       } finally {
         setIsLoading(false);
       }
@@ -35,8 +39,20 @@ function PokemonDetailsPage() {
   }
 
   if (error || !pokemon) {
-    return <p className="error">{error}</p>;
+    return (
+      <section className="page">
+        <Link to="/pokedex" className="back-link">
+          ← Back to Pokédex
+        </Link>
+        <p className="error">{error}</p>
+      </section>
+    );
   }
+
+  const totalStats = pokemon.stats.reduce(
+    (total, item) => total + item.base_stat,
+    0
+  );
 
   return (
     <section className="details-page">
@@ -58,7 +74,12 @@ function PokemonDetailsPage() {
 
           <div className="tag-list">
             {pokemon.types.map((item) => (
-              <span key={item.type.name}>{item.type.name}</span>
+              <span
+                key={item.type.name}
+                className={getTypeClass(item.type.name)}
+              >
+                {item.type.name}
+              </span>
             ))}
           </div>
 
@@ -67,9 +88,15 @@ function PokemonDetailsPage() {
               <strong>Height</strong>
               <p>{pokemon.height / 10} m</p>
             </div>
+
             <div>
               <strong>Weight</strong>
               <p>{pokemon.weight / 10} kg</p>
+            </div>
+
+            <div className="stat-total-box">
+              <strong>Base Stat Total</strong>
+              <p>{totalStats}</p>
             </div>
           </div>
 

@@ -165,6 +165,46 @@ button {
   margin-bottom: 34px;
 }
 
+.search-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  background: #1e293b;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 20px;
+  padding: 12px;
+}
+
+.search-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+
+.search-form input::placeholder {
+  color: #94a3b8;
+}
+
+.search-form button {
+  border: none;
+  background: #facc15;
+  color: #0f172a;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-form button:hover {
+  transform: translateY(-2px);
+}
+
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -293,13 +333,88 @@ button {
   margin: 20px 0;
 }
 
-.tag-list span {
-  background: #334155;
-  color: #f8fafc;
+.type-badge {
+  color: white;
   padding: 8px 14px;
   border-radius: 999px;
   text-transform: capitalize;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.type-normal {
+  background: #a8a77a;
+}
+
+.type-fire {
+  background: #ee8130;
+}
+
+.type-water {
+  background: #6390f0;
+}
+
+.type-electric {
+  background: #f7d02c;
+  color: #1f2937;
+}
+
+.type-grass {
+  background: #7ac74c;
+}
+
+.type-ice {
+  background: #96d9d6;
+  color: #1f2937;
+}
+
+.type-fighting {
+  background: #c22e28;
+}
+
+.type-poison {
+  background: #a33ea1;
+}
+
+.type-ground {
+  background: #e2bf65;
+  color: #1f2937;
+}
+
+.type-flying {
+  background: #a98ff3;
+}
+
+.type-psychic {
+  background: #f95587;
+}
+
+.type-bug {
+  background: #a6b91a;
+}
+
+.type-rock {
+  background: #b6a136;
+}
+
+.type-ghost {
+  background: #735797;
+}
+
+.type-dragon {
+  background: #6f35fc;
+}
+
+.type-dark {
+  background: #705746;
+}
+
+.type-steel {
+  background: #b7b7ce;
+  color: #1f2937;
+}
+
+.type-fairy {
+  background: #d685ad;
 }
 
 .info-grid {
@@ -320,6 +435,16 @@ button {
 .info-grid p {
   color: #cbd5e1;
   margin-bottom: 0;
+}
+
+.stat-total-box {
+  grid-column: span 2;
+}
+
+.stat-total-box p {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #facc15;
 }
 
 .ability-list {
@@ -441,12 +566,20 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .search-form {
+    flex-direction: column;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
 
   .stat-row {
     grid-template-columns: 1fr;
+  }
+
+  .stat-total-box {
+    grid-column: span 1;
   }
 
   .details-card {
